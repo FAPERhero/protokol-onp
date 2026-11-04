@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Protokol ONP — oficiální metodika vizuálního měření a kontroly rozměrů. Revize 1.0.">
+  <meta property="og:title" content="Protokol ONP | Metodika vizuálního měření">
+  <meta property="og:description" content="Přesnost závisí na zkušenostech a míře přesvědčení obsluhy.">
+  <meta property="og:type" content="website">
+  <title>Protokol ONP — Metodika vizuálního měření</title>
+  <style>
+    :root { --ink:#182536; --mute:#59687a; --line:#cdd5dd; --paper:#fff; --bg:#e9edf1; --accent:#a74123; }
+    * {box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif;color:var(--ink);line-height:1.6}
+    .topbar{max-width:920px;margin:24px auto 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 12px}
+    .brand{display:flex;gap:10px;align-items:center;font-size:.85rem;font-weight:750;letter-spacing:.08em;text-transform:uppercase;color:#2d3e50}
+    .brand-icon{display:grid;place-items:center;width:35px;height:35px;border:2px solid var(--accent);border-radius:7px;color:var(--accent);font-weight:900;letter-spacing:-.05em}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:end}
+    button{font:inherit;font-size:.86rem;font-weight:700;border:1px solid #aab7c4;background:white;border-radius:9px;color:var(--ink);cursor:pointer;padding:9px 14px}
+    button.primary{background:var(--ink);color:white;border-color:var(--ink)}
+    button:hover{filter:brightness(.95)} button:focus-visible{outline:3px solid #e4a757;outline-offset:2px}
+    .sheet{max-width:920px;margin:0 auto 26px;background:var(--paper);padding:55px 70px 46px;border:1px solid #d8dfe5;box-shadow:0 13px 40px rgba(20,35,50,.10)}
+    .sheet-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;border-bottom:4px double var(--ink);padding-bottom:22px}
+    .category{font-size:.70rem;letter-spacing:.15em;font-weight:850;text-transform:uppercase;color:var(--accent)}
+    h1{margin:8px 0 0;line-height:1.07;letter-spacing:-.055em;font-size:clamp(3.25rem,8vw,5rem);font-weight:900}
+    .subtitle{margin:12px 0 0;font-size:1.03rem;font-weight:600;color:#46566a}
+    .seal{border:2px solid var(--accent);color:var(--accent);border-radius:50%;height:104px;width:104px;flex:0 0 104px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:.68rem;font-weight:900;line-height:1.27;text-transform:uppercase;transform:rotate(12deg);letter-spacing:.04em;margin-top:7px}
+    .meta{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:18px 0 17px;border-bottom:1px solid var(--line);margin-bottom:30px}
+    .meta .key{font-size:.67rem;color:var(--mute);font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .meta .val{font-size:.82rem;font-weight:750;margin-top:2px}
+    h2{font-size:1.12rem;letter-spacing:.005em;margin:30px 0 12px;font-weight:850;border-left:4px solid var(--accent);padding-left:13px;line-height:1.4}
+    p{margin:0 0 13px;font-size:.98rem}
+    ul{margin:10px 0 16px;padding-left:22px}
+    li{margin:5px 0;padding-left:1px}
+    .note{background:#f3f5f7;border-left:3px solid #6d7e90;padding:12px 17px;margin:15px 0;font-size:.91rem}
+    .steps{display:grid;gap:14px}
+    .step{display:grid;grid-template-columns:42px 1fr;gap:11px}
+    .step .num{display:flex;align-items:center;justify-content:center;background:#e9edf1;border-radius:7px;font-weight:900;font-size:1rem;height:36px}
+    .step h3{font-size:.98rem;margin:0 0 4px}
+    .step p{margin:0}
+    .rule{margin:18px 0;border:0;border-top:1px solid var(--line)}
+    .punchline{margin:23px 0 21px;text-align:center;border:3px solid var(--ink);padding:24px 12px 21px}
+    .punchline .eyebrow{font-size:.70rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+    .punchline .words{font-size:clamp(1.7rem,5vw,3rem);line-height:1.1;font-weight:950;letter-spacing:-.045em;margin-top:9px;text-transform:uppercase}
+    .approval{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:26px;padding-top:17px;border-top:1px solid var(--line)}
+    .field{font-size:.77rem;color:var(--mute);padding-top:37px;border-bottom:1px solid #8795a5;}
+    .fineprint{font-size:.73rem;color:#687786;margin-top:30px;padding-top:12px;border-top:1px solid var(--line)}
+    .footer{text-align:center;color:#5a6878;font-size:.79rem;margin:0 auto 38px;padding:0 16px}
+    @media(max-width:700px){.sheet{padding:28px 25px}.sheet-top{gap:4px}.seal{height:76px;width:76px;flex-basis:76px;font-size:.53rem}.meta{grid-template-columns:repeat(2,1fr)}.brand{font-size:.73rem}.actions button{font-size:.8rem;padding:7px 9px}.topbar{margin-top:12px}.approval{gap:13px}}
+    @media(max-width:390px){.sheet{padding:20px 17px}.seal{display:none}.topbar{align-items:flex-start}.brand{margin-top:8px}.actions{max-width:180px}}
+    @page{size:A4;margin:14mm 17mm}
+    @media print{
+      html,body{background:#fff!important;color:#111!important;font:10.5pt/1.42 Arial,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+      .topbar,.footer{display:none!important}
+      .sheet{max-width:none;width:100%;margin:0;border:0;box-shadow:none;padding:0}
+      .sheet-top{padding-bottom:12px}.seal{height:79px;width:79px;flex-basis:79px}
+      h1{font-size:43pt}.subtitle{font-size:11pt}.meta{margin-bottom:14px;padding:10px 0}
+      h2{font-size:12pt;margin:18px 0 7px;break-after:avoid}
+      p,li{font-size:9.4pt;margin-bottom:7px}.step{gap:5px}.steps{gap:9px}.step h3{font-size:9.5pt}.step p{margin:0}
+      .note{padding:8px 11px;margin:10px 0}.punchline{break-inside:avoid;padding:13px}.punchline .words{font-size:23pt}
+      .approval{break-inside:avoid}.fineprint{font-size:7pt;margin-top:16px}
+      li,.step{break-inside:avoid}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand"><span class="brand-icon" aria-hidden="true">ONP</span> Metrologické standardy</div>
+    <div class="actions">
+      <button type="button" onclick="copyLink(this)">Kopírovat odkaz</button>
+      <button class="primary" type="button" onclick="window.print()">Vytisknout protokol</button>
+    </div>
+  </div>
+  <main class="sheet">
+    <header class="sheet-top">
+      <div>
+        <div class="category">Interní technická metodika · Neřízená dokumentace</div>
+        <h1>PROTOKOL ONP</h1>
+        <p class="subtitle">Oficiální metodika vizuálního měření a kontroly rozměrů</p>
+      </div>
+      <div class="seal" aria-label="Razítko: Vizualně ověřeno">VIZUÁLNĚ<br>OVĚŘENO<br>✓</div>
+    </header>
+    <div class="meta">
+      <div><div class="key">Číslo dokumentu</div><div class="val">ONP-001/2026</div></div>
+      <div><div class="key">Revize</div><div class="val">1.0</div></div>
+      <div><div class="key">Oddělení</div><div class="val">Pokročilá metrologie</div></div>
+      <div><div class="key">Stupeň utajení</div><div class="val">Odborný personál</div></div>
+    </div>
+    <section>
+      <h2>1. ÚČEL PROTOKOLU</h2>
+      <p>Protokol ONP stanovuje standardizovaný postup pro provádění vysoce přesného vizuálního měření bez nutnosti použití konvenčních měřicích přístrojů.</p>
+      <p>Metodika vychází z dlouholetých zkušeností odborného personálu a předpokládá, že dostatečně kvalifikovaný pracovník dokáže stanovit rozměrovou odchylku pouhým pohledem.</p>
+    </section>
+    <section>
+      <h2>2. POŽADAVKY NA MĚŘICÍ ZAŘÍZENÍ</h2>
+      <p>Pro správné provedení měření je nutné zajistit:</p>
+      <ul>
+        <li><strong>2× funkční oko</strong> (povolena varianta 1× oko s rozšířenou praxí).</li>
+        <li><strong>1× hlava</strong> s dostatečnou kapacitou vyhodnocování.</li>
+        <li>Minimálně 5 let zkušeností s větou „To je dobrý, to vidím.“</li>
+        <li>Schopnost sebevědomě oznámit výsledek bez ohledu na skutečný stav.</li>
+      </ul>
+      <div class="note"><strong>UPOZORNĚNÍ:</strong> Použití šuplery, mikrometru nebo jiného měřicího zařízení může negativně ovlivnit přirozenou přesnost metody ONP.</div>
+    </section>
+    <section>
+      <h2>3. POSTUP MĚŘENÍ</h2>
+      <div class="steps">
+        <div class="step"><div class="num">01</div><div><h3>Příprava</h3><p>Pracovník zaujme stabilní polohu před kontrolovaným objektem a provede základní kalibraci zraku dvojitým zamrkáním.</p></div></div>
+        <div class="step"><div class="num">02</div><div><h3>Vizuální analýza</h3><p>Kontrolovaný rozměr je nutné pozorovat po dobu minimálně 3 sekund. Pro zvýšení přesnosti se doporučuje mírné přimhouření očí a naklonění hlavy pod úhlem přibližně 15°.</p></div></div>
+        <div class="step"><div class="num">03</div><div><h3>Vyhodnocení</h3><p>Na základě získaných vizuálních dat pracovník stanoví rozměr s přesností odpovídající jeho aktuálnímu sebevědomí.</p></div></div>
+        <div class="step"><div class="num">04</div><div><h3>Potvrzení výsledku</h3><p>Naměřenou hodnotu pracovník potvrdí jedním z následujících odborných výroků: „To má přesně tolik.“ / „Vidím to úplně jasně.“ / „Já už to mám v oku.“ / „Na co šuplera?“</p></div></div>
+      </div>
+    </section>
+    <section>
+      <h2>4. PŘESNOST A TOLERANCE</h2>
+      <p>Přesnost měření je přímo úměrná délce praxe a hlasitosti, s jakou pracovník obhajuje svůj výsledek.</p>
+      <p><strong>Doporučená tolerance:</strong> ± podle potřeby.</p>
+      <p>V případě nesouladu mezi výsledkem protokolu ONP a hodnotou z kalibrovaného měřidla má přednost pracovník s vyšším počtem odpracovaných let, pokud dokáže svůj výsledek dostatečně důrazně obhájit.</p>
+    </section>
+    <section>
+      <h2>5. ZÁVĚREČNÉ USTANOVENÍ</h2>
+      <p>Protokol ONP představuje vrchol moderní průmyslové metrologie a eliminuje zbytečné časové ztráty způsobené hledáním měřidel.</p>
+      <p>Veškerá odpovědnost za správnost měření přechází na osobu, která výsledku uvěřila.</p>
+      <div class="punchline">
+        <div class="eyebrow">Vysvětlení zkratky ONP a základní princip metodiky</div>
+        <div class="words">OKO NENÍ PÍČA</div>
+      </div>
+    </section>
+    <section>
+      <h2>6. SCHVALOVACÍ DOLOŽKA</h2>
+      <p>Potvrzuji, že jsem si metodiku řádně prohlédl a na první pohled proti ní nemám výhrady.</p>
+      <div class="approval">
+        <div class="field">Ověřil: odpovědný pracovník kvality</div>
+        <div class="field">Podpis / razítko / pohled z dálky</div>
+      </div>
+    </section>
+    <div class="fineprint">Vydání 2026 · Dokument je humoristická parodie. Nejde o skutečnou metrologickou normu ani schválený pracovní postup. Při reálné kontrole používejte předepsaná měřidla a postupy.</div>
+  </main>
+  <div class="footer">© 2026 · Protokol ONP · Nepodléhá kalibraci. Podléhá zdravému rozumu.</div>
+  <script>
+    async function copyLink(btn){
+      if(location.protocol==='file:'){btn.textContent='Nejdřív zveřejnit web';setTimeout(()=>btn.textContent='Kopírovat odkaz',2300);return;}
+      try { await navigator.clipboard.writeText(location.href);btn.textContent='Odkaz zkopírován ✓'; }
+      catch(e) {btn.textContent='Zkopíruj adresu z prohlížeče';}
+      setTimeout(()=>btn.textContent='Kopírovat odkaz',2300);
+    }
+  </script>
+</body>
+</html>
