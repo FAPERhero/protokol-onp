@@ -41,6 +41,10 @@
     .step h3{font-size:.98rem;margin:0 0 4px}
     .step p{margin:0}
     .rule{margin:18px 0;border:0;border-top:1px solid var(--line)}
+    .validations{display:grid;grid-template-columns:1fr 1fr;gap:2px 17px;margin:8px 0 0;padding-left:21px}
+    .validations li{margin:1px 0;font-size:.93rem}
+    .tolerance{font-weight:600}
+    @media(max-width:530px){.validations{grid-template-columns:1fr}}
     .punchline{margin:23px 0 21px;text-align:center;border:3px solid var(--ink);padding:24px 12px 21px}
     .punchline .eyebrow{font-size:.70rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
     .punchline .words{font-size:clamp(1.7rem,5vw,3rem);line-height:1.1;font-weight:950;letter-spacing:-.045em;margin-top:9px;text-transform:uppercase}
@@ -61,6 +65,7 @@
       p,li{font-size:9.4pt;margin-bottom:7px}.step{gap:5px}.steps{gap:9px}.step h3{font-size:9.5pt}.step p{margin:0}
       .note{padding:8px 11px;margin:10px 0}.punchline{break-inside:avoid;padding:13px}.punchline .words{font-size:23pt}
       .approval{break-inside:avoid}.fineprint{font-size:7pt;margin-top:16px}
+      .validations{grid-template-columns:1fr 1fr;gap:0 12px}.validations li{font-size:9pt}
       li,.step{break-inside:avoid}
     }
   </style>
@@ -85,8 +90,8 @@
     <div class="meta">
       <div><div class="key">Číslo dokumentu</div><div class="val">ONP-001/2026</div></div>
       <div><div class="key">Revize</div><div class="val">1.0</div></div>
-      <div><div class="key">Oddělení</div><div class="val">Pokročilá metrologie</div></div>
-      <div><div class="key">Stupeň utajení</div><div class="val">Odborný personál</div></div>
+      <div><div class="key">Oddělení</div><div class="val">Technická kontrola a pokročilá metrologie</div></div>
+      <div><div class="key">Režim</div><div class="val">Interní / odborný</div></div>
     </div>
     <section>
       <h2>1. ÚČEL PROTOKOLU</h2>
@@ -110,13 +115,13 @@
         <div class="step"><div class="num">01</div><div><h3>Příprava</h3><p>Pracovník zaujme stabilní polohu před kontrolovaným objektem a provede základní kalibraci zraku dvojitým zamrkáním.</p></div></div>
         <div class="step"><div class="num">02</div><div><h3>Vizuální analýza</h3><p>Kontrolovaný rozměr je nutné pozorovat po dobu minimálně 3 sekund. Pro zvýšení přesnosti se doporučuje mírné přimhouření očí a naklonění hlavy pod úhlem přibližně 15°.</p></div></div>
         <div class="step"><div class="num">03</div><div><h3>Vyhodnocení</h3><p>Na základě získaných vizuálních dat pracovník stanoví rozměr s přesností odpovídající jeho aktuálnímu sebevědomí.</p></div></div>
-        <div class="step"><div class="num">04</div><div><h3>Potvrzení výsledku</h3><p>Naměřenou hodnotu pracovník potvrdí jedním z následujících odborných výroků: „To má přesně tolik.“ / „Vidím to úplně jasně.“ / „Já už to mám v oku.“ / „Na co šuplera?“</p></div></div>
+        <div class="step"><div class="num">04</div><div><h3>Potvrzení výsledku</h3><p>Naměřenou hodnotu pracovník potvrdí jedním z následujících odborných výroků:</p><ul class="validations"><li>„To má přesně tolik.“</li><li>„Vidím to úplně jasně.“</li><li>„Já už to mám v oku.“</li><li>„Na co šuplera?“</li></ul></div></div>
       </div>
     </section>
     <section>
       <h2>4. PŘESNOST A TOLERANCE</h2>
       <p>Přesnost měření je přímo úměrná délce praxe a hlasitosti, s jakou pracovník obhajuje svůj výsledek.</p>
-      <p><strong>Doporučená tolerance:</strong> ± podle potřeby.</p>
+      <p class="tolerance"><strong>Doporučená tolerance:</strong> ± podle potřeby.</p>
       <p>V případě nesouladu mezi výsledkem protokolu ONP a hodnotou z kalibrovaného měřidla má přednost pracovník s vyšším počtem odpracovaných let, pokud dokáže svůj výsledek dostatečně důrazně obhájit.</p>
     </section>
     <section>
@@ -136,7 +141,7 @@
         <div class="field">Podpis / razítko / pohled z dálky</div>
       </div>
     </section>
-    <div class="fineprint">Vydání 2026 · Dokument je humoristická parodie. Nejde o skutečnou metrologickou normu ani schválený pracovní postup. Při reálné kontrole používejte předepsaná měřidla a postupy.</div>
+    <div class="fineprint">ONP-001/2026 · Výsledek měření je subjektivně závazný. Dokument je humoristická parodie. Nejde o skutečnou metrologickou normu ani schválený pracovní postup. Při reálné kontrole používejte předepsaná měřidla a postupy.</div>
   </main>
   <div class="footer">© 2026 · Protokol ONP · Nepodléhá kalibraci. Podléhá zdravému rozumu.</div>
   <script>
